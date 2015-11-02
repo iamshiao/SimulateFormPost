@@ -1,0 +1,36 @@
+﻿@using SimulateFormPost.Controllers
+@model AccountInfo
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    #form1 {
+        border: 5px solid #B40404;
+    }
+
+    #form2 {
+        margin-top: 20px;
+        border: 5px solid #08088A;
+    }
+</style>
+
+<h1>Simulate of form post</h1>
+<p>correct account is <strong style="color: #B40404">acc123</strong>, and password is the same. </p>
+
+<hr />
+<div>
+    @using (@Html.BeginForm("JsonRes", "Home", FormMethod.Post, new { id = "form1" }))
+    {
+        <h3 style="color:#B40404;">Regular post</h3>
+        <label>Account: </label>@Html.EditorFor(m => m.Account); <br />
+        <label>Password: </label>@Html.EditorFor(m => m.Password);
+        <button>Submit</button>
+    }
+
+    @using (@Html.BeginForm("FakePost", "Home", FormMethod.Post, new { id = "form2" }))
+    {
+        <h3 style="color:#08088A;">Fake post</h3>
+        <button>Submit</button>
+    }
+</div>
